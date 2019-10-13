@@ -11,18 +11,25 @@ def menu():
     print('1 - Create\n' +
     '2 - Read\n' +
     '3 - Update\n' +
-    '4 - Delete')
+    '4 - Delete\n\n'+
+    '0 - Exit')
 
 createDataBase()
 
 while True:
     cabecalho()
     menu()
-    opcao = input('\nOpção: ')
+    opcao = int(input('\nOpção: '))
 
     if opcao == 1:
-        ## TODO: create
-        pass
+        cabecalho()
+        print('MENU CREATE\n')
+        nome = input('nome: ')
+        fone = input('telefone: ')
+        email = input('email: ')
+        db_insert(nome, fone, email)
+        print('cadastrado com sucesso!')
+        sleep(1)
     elif opcao == 2:
         ## TODO: read
         pass
@@ -32,5 +39,8 @@ while True:
     elif opcao == 4:
         ## TODO: delete
         pass
+    elif opcao == 0:
+        break
     else:
         print('invalido')
+        sleep(1)
