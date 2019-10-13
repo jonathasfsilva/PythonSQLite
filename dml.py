@@ -1,5 +1,6 @@
 import sqlite3
 
+
 def db_insert(nome, fone, email):
     return """
     INSERT INTO users (name, phone, email)
@@ -11,11 +12,13 @@ def db_update(nome, email):
     UPDATE users SET name = '{}' WHERE email = '{}'
     """.format(nome, email)
 
-con = sqlite3.connect('base.db')
+def db_delete(email):
+    return """
+    DELETE FROM users WHERE email = '{}'
+    """.format(email)
 
-cursor = con.cursor()
-
-con.execute(db_update("Jonathas F Silva", "jonathas@gmail.com"))
-
-con.commit()
-con.close()
+def db_select(data, field):
+    return """
+    SELECT id, name, phone, email
+    FROM users
+    WHERE {}={}""".format(field, data)
