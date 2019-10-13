@@ -13,13 +13,7 @@ def menu():
     '3 - Update\n' +
     '4 - Delete')
 
-def startDataBase():
-    try:
-        createDataBase()
-    except Exception as e:
-        raise
-
-startDataBase()
+createDataBase()
 
 while True:
     cabecalho()

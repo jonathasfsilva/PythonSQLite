@@ -11,8 +11,8 @@ def createDataBase():
     try:
         cursor.execute(sqlStr)
         con.commit()
-    except Exception as e:
-        raise
+    except:
+        pass
     con.close()
 
 createDataBase()
