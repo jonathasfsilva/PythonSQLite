@@ -1,17 +1,21 @@
 import sqlite3
 
 def db_insert(nome, fone, email):
-    sqlStr = """
+    return """
     INSERT INTO users (name, phone, email)
     VALUES('{}', '{}', '{}')
     """.format(nome, fone, email)
-    cursor.execute(sqlStr)
-    con.commit()
+
+def db_update(nome, email):
+    return """
+    UPDATE users SET name = '{}' WHERE email = '{}'
+    """.format(nome, email)
 
 con = sqlite3.connect('base.db')
 
 cursor = con.cursor()
 
-db_insert("juvenal", "92292323", "juju@venal.com")
+con.execute(db_update("Jonathas F Silva", "jonathas@gmail.com"))
 
+con.commit()
 con.close()
