@@ -1,7 +1,6 @@
 from dml import db_insert, db_update, db_delete, db_select
 from base import createDataBase
 from interface import cabecalho, menu, mostraDados
-#from os import system
 from time import sleep
 
 createDataBase()
@@ -43,8 +42,15 @@ while True:
             print('nenhum email encontrado')
         input()
     elif opcao == 4:
-        ## TODO: delete
-        pass
+        cabecalho()
+        print('MENU DELETE')
+        data = input('digite um email:  ')
+        if db_select(data, 'email') != None:
+            db_delete(data)
+            print('deletado com sucesso')
+        else:
+            print('nenhum email encontrado')
+        input()
     elif opcao == 0:
         break
     else:
