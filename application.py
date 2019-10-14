@@ -1,6 +1,6 @@
 from dml import db_insert, db_update, db_delete, db_select
 from base import createDataBase
-from interface import cabecalho, menu
+from interface import cabecalho, menu, mostraDados
 #from os import system
 from time import sleep
 
@@ -24,14 +24,24 @@ while True:
         cabecalho()
         print('MENU READ\n')
         #field = input('qual campo voce quer pesquisar? (id, name, phone, email):')
-        data = input('qual dado: ')
-
-        res = db_select(data, "name")
-        print(res)
+        data = input('digite um email:  ')
+        res = db_select(data, "email")
+        if res != None:
+            mostraDados(res)
+        else:
+            print('nenhum email encontrado')
         input()
     elif opcao == 3:
-        ## TODO: Update
-        pass
+        cabecalho()
+        print('MENU UPDATE')
+        data = input('digite um email:  ')
+        if db_select(data, 'email') != None:
+            nome = input('novo nome: ')
+            db_update(nome, data)
+            mostraDados(db_select(data, 'email'))
+        else:
+            print('nenhum email encontrado')
+        input()
     elif opcao == 4:
         ## TODO: delete
         pass

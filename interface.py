@@ -10,3 +10,8 @@ def menu():
     '3 - Update\n' +
     '4 - Delete\n\n'+
     '0 - Exit')
+
+def mostraDados(res):
+    print('\nnome:',res[0])
+    print('email:',res[1])
+    print('telefone:',res[2])
