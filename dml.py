@@ -33,10 +33,10 @@ def db_select(data, field):
     con = sqlite3.connect('base.db')
     cursor = con.cursor()
     sql = """
-    SELECT id, name, phone, email
+    SELECT name, email, phone
     FROM users
-    WHERE {}={}""".format(field, data)
+    WHERE {} == '{}' """.format(field, data)
     cursor.execute(sql)
-    data = cursor.fetchall()
+    data = cursor.fetchone()
     con.close()
     return data
