@@ -1,18 +1,8 @@
 from dml import db_insert, db_update, db_delete, db_select
 from base import createDataBase
-from os import system
+from interface import cabecalho, menu
+#from os import system
 from time import sleep
-
-def cabecalho():
-    system('clear')
-    print(10*'-'+'CRUD EM PYTHON'+10*'-'+'\n')
-
-def menu():
-    print('1 - Create\n' +
-    '2 - Read\n' +
-    '3 - Update\n' +
-    '4 - Delete\n\n'+
-    '0 - Exit')
 
 createDataBase()
 
@@ -31,8 +21,14 @@ while True:
         print('cadastrado com sucesso!')
         sleep(1)
     elif opcao == 2:
-        ## TODO: read
-        pass
+        cabecalho()
+        print('MENU READ\n')
+        #field = input('qual campo voce quer pesquisar? (id, name, phone, email):')
+        data = input('qual dado: ')
+
+        res = db_select(data, "name")
+        print(res)
+        input()
     elif opcao == 3:
         ## TODO: Update
         pass
